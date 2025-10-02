@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Solde Global";
+}
+
+<h2>Solde Global</h2>
+<div class="alert alert-success mt-3">
+    <h4>Le solde total de tous les comptes est : <strong>@ViewBag.SoldeGlobal</strong> DH</h4>
+</div>
+<a asp-controller="Compte" asp-action="Index" class="btn btn-secondary">Retour</a>

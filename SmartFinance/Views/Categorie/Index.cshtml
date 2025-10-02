@@ -1,0 +1,32 @@
+﻿@model List<SmartFinance.Models.Categorie>
+@{
+    ViewData["Title"] = "Liste des categorie";
+}
+
+
+<h2 class="mb-3">Liste des Categories</h2>
+
+<a asp-controller="Categorie" asp-action="Create" class="btn btn-primary">+ Ajouter une categorie</a>
+
+<table asp-controller="Categorie" asp-action="Index" method="get" class="table">
+    <tr>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>Est Essetielle</th>
+    <th>A Un Plafond</th>
+    <th>Action</th>
+    </tr>
+    @foreach(var cat in Model)
+    {
+        <tr>
+        <td>@cat.Nom</td>
+        <td>@cat.Description</td>
+        <td>@cat.EstEssetielle</td>
+        <td>@cat.AUnPlafond</td>
+        <td class="btn-group">
+        <a asp-controller="Categorie" asp-action="Edit" asp-route-id="@cat.Id" class="btn btn-warning">Modifier</a>
+        <a asp-controller="Categorie" asp-action="Delete" asp-route-id="@cat.Id" class="btn btn-danger">Supprimer</a>
+            </td>
+        </tr>
+    }
+</table>

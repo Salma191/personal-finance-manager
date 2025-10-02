@@ -1,0 +1,31 @@
+﻿@model SmartFinance.Models.Transaction
+@{
+}
+
+<form asp-controller="Transaction" asp-action="Edit" method="post">
+    <div>
+        <label asp-for="Montant">Montant</label>
+        <input asp-for="Montant" value="@Model.Montant"/>
+    </div>
+    <div>
+        <label asp-for="Date">Date</label>
+        <input asp-for="Date" type="date" value="@Model.Date.ToString("yyyy-MM-dd")" />
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" value="@Model.Description" />
+    </div>
+    <div>
+        <label asp-for="Type">Type</label>
+        <select asp-for="Type" asp-items="ViewBag.TypeTransactions" value="@Model.Type"></select>
+    </div>
+    <div>
+        <label asp-for="CategorieId">Categorie</label>
+        <select asp-for="CategorieId" asp-items="ViewBag.Categories" value="@Model.CategorieId"></select>
+    </div>
+    <div>
+        <label asp-for="CompteId">Compte</label>
+        <select asp-for="CompteId" asp-items="ViewBag.Comptes" value="@Model.CompteId"></select>
+    </div>
+    <button type="submit">Enregistrer</button>
+</form>

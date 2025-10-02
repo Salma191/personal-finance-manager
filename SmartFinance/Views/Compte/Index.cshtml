@@ -1,0 +1,35 @@
+﻿@model List<SmartFinance.Models.Compte>
+
+@{
+    ViewData["Title"] = "Liste des comptes";
+}
+
+
+<h2 class="mb-3">Liste des Comptes</h2>
+
+<a asp-controller="Compte" asp-action="Create" class="btn btn-primary">+ Ajouter un compte</a>
+<table asp-controller="Compte" asp-action="Index" method="get" class="table mt-3">
+    <tr> 
+        <th>Nom</th>
+        <th>Institution</th>
+        <th>Solde</th>
+        <th>Type Compte</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var compte in Model) {
+        <tr>
+         <td>@compte.Nom</td>
+        <td>@compte.Institution</td>
+        <td>@compte.Solde</td>
+        <td>@compte.TypeCompte</td>
+            <td class="btn-group">
+                <a asp-controller="Compte" asp-action="Edit" asp-route-id="@compte.Id" class="btn btn-warning">Modifier</a>
+                <a asp-controller="Compte" asp-action="Delete" asp-route-id="@compte.Id" method="post" class="btn btn-danger">Supprimer</a>
+                <a asp-controller="Compte" asp-action="Details" asp-route-id="@compte.Id" class="btn btn-info">Details</a>
+        </td>
+    </tr>
+    }
+
+</table>
+
+<a asp-controller="Compte" asp-action="SoldeGlobal" class="btn btn-success">Voir le solde global</a>

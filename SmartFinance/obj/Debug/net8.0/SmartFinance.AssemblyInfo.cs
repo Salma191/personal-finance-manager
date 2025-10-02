@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartFinance")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f51f228c5dacff8d1a1bc00645270c6a81f525e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27f88a2fcf63abb0fa6336d7a4e03d2ec1a61b3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartFinance")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartFinance")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
