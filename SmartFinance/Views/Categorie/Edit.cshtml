@@ -12,9 +12,9 @@
         <input asp-for="Description" value="@Model.Description" />
     </div>
     <div>
-        <label asp-for="EstEssetielle">EstEssentielle :</label>
-        @Html.RadioButtonFor(m => m.EstEssetielle, true, new { @checked = Model.EstEssetielle ? "checked" : "" }) Oui
-        @Html.RadioButtonFor(m => m.EstEssetielle, false, new { @checked = !Model.EstEssetielle ? "checked" : "" }) Non 
+        <label asp-for="EstEssentielle">EstEssentielle :</label>
+        @Html.RadioButtonFor(m => m.EstEssentielle, true, new { @checked = Model.EstEssentielle ? "checked" : "" }) Oui
+        @Html.RadioButtonFor(m => m.EstEssentielle, false, new { @checked = !Model.EstEssentielle ? "checked" : "" }) Non 
     </div>
     <div>
         <label asp-for="AUnPlafond">AUnPlafond</label>

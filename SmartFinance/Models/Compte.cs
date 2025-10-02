@@ -1,5 +1,4 @@
-﻿using SmartFinance.Models.SmartFinance.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartFinance.Models
 {

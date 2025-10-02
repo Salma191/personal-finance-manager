@@ -36,7 +36,7 @@ namespace SmartFinance.Service.Implementations
 
             existingCategorie.Nom = categorie.Nom;
             existingCategorie.Description = categorie.Description;
-            existingCategorie.EstEssetielle = categorie.EstEssetielle;
+            existingCategorie.EstEssentielle = categorie.EstEssentielle;
             existingCategorie.AUnPlafond = categorie.AUnPlafond;
             existingCategorie.ParentId = categorie.ParentId;
             await _context.SaveChangesAsync();

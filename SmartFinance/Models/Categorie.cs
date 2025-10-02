@@ -1,5 +1,4 @@
-﻿using SmartFinance.Models.SmartFinance.Models;
-
+﻿
 namespace SmartFinance.Models
 {
 
