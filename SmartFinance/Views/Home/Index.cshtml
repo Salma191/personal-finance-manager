@@ -1,8 +1,148 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "SmartFinance - Gestionnaire de Finances Personnelles";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .cta-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="#">
+                <i class="fas fa-chart-line me-2"></i>SmartFinance
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="#features">Fonctionnalités</a>
+                <a class="nav-link" href="#about">À propos</a>
+                <a href="/Home/Login" class="btn btn-outline-primary me-2">Connexion</a>
+                <a href="/Home/Register" class="btn btn-primary">Inscription</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">
+                        Prenez le contrôle de vos finances
+                    </h1>
+                    <p class="lead mb-4">
+                        SmartFinance vous aide à gérer vos dépenses, suivre vos budgets et atteindre vos objectifs financiers.
+                        Simple, sécurisé et efficace.
+                    </p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a href="/Home/Register" class="btn btn-light btn-lg px-4 me-md-2">
+                            Commencer gratuitement
+                        </a>
+                        <a href="#features" class="btn btn-outline-light btn-lg px-4">
+                            En savoir plus
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://via.placeholder.com/500x300?text=Dashboard+Preview"
+                         alt="Tableau de bord SmartFinance"
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Fonctionnalités principales</h2>
+                <p class="lead">Tout ce dont vous avez besoin pour une gestion financière optimale</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h4>Suivi des dépenses</h4>
+                        <p>Catégorisez et suivez toutes vos dépenses en temps réel avec des rapports détaillés.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4>Budgets personnalisés</h4>
+                        <p>Créez des budgets par catégorie et recevez des alertes lorsque vous approchez des limites.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>Objectifs financiers</h4>
+                        <p>Définissez et suivez vos objectifs d'épargne avec des outils de visualisation avancés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="display-6 fw-bold mb-4">Prêt à transformer votre gestion financière ?</h2>
+            <p class="lead mb-4">Rejoignez des milliers d'utilisateurs qui ont déjà pris le contrôle de leurs finances.</p>
+            <a href="/Home/Register" class="btn btn-primary btn-lg px-5">
+                Créer un compte gratuit
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 SmartFinance. Tous droits réservés.</p>
+            <div class="mt-2">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

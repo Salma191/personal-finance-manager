@@ -1,0 +1,26 @@
+﻿@model SmartFinance.Models.Categorie
+@{
+}
+
+<form asp-controller="Categorie" asp-action="Edit" method="post">
+    <div>
+        <label asp-for="Nom">Nom</label>
+        <input asp-for="Nom" value="@Model.Nom" />
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" value="@Model.Description" />
+    </div>
+    <div>
+        <label asp-for="EstEssetielle">EstEssentielle :</label>
+        @Html.RadioButtonFor(m => m.EstEssetielle, true, new { @checked = Model.EstEssetielle ? "checked" : "" }) Oui
+        @Html.RadioButtonFor(m => m.EstEssetielle, false, new { @checked = !Model.EstEssetielle ? "checked" : "" }) Non 
+    </div>
+    <div>
+        <label asp-for="AUnPlafond">AUnPlafond</label>
+        @Html.RadioButtonFor(m => m.AUnPlafond, true, new { @checked = Model.AUnPlafond ? "checked" : "" }) Oui
+        @Html.RadioButtonFor(m => m.AUnPlafond, false, new { @checked = !Model.AUnPlafond ? "checked" : "" }) Non
+    </div>
+
+    <button type="submit">Enregistrer</button>
+</form>

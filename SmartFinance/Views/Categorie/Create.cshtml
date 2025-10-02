@@ -1,0 +1,33 @@
+﻿@model SmartFinance.Models.Categorie
+@{
+    ViewData["Title"] = "Créer un compte";
+}
+
+<h2>Créer un compte</h2>
+
+<form asp-controller="Categorie" asp-action="Create">
+    <div>
+        <label asp-for="Nom" class="form-label">Nom :</label>
+        <input asp-for="Nom" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="Description" class="form-label">Description :</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="EstEssetielle" class="form-label">Est Essetielle :</label>
+        <input type="radio" asp-for="EstEssetielle" value="true" class="form-check-input" /> <label class="form-check-label">Oui</label>
+        <input type="radio" asp-for="EstEssetielle" value="false" class="form-check-input" /> <label class="form-check-label">Non</label>
+    </div>
+    <div>
+        <label asp-for="AUnPlafond" class="form-label">A Un Plafond :</label>
+        <input type="radio" asp-for="AUnPlafond" value="true" class="form-check-input" /> <label class="form-check-label">
+            Oui </label>
+        <input type="radio" asp-for="AUnPlafond" value="false" class="form-check-input" /> <label class="form-check-label">Non </label>
+    </div>
+    <div>
+        <label asp-for="ParentId" class="form-label">Parent :</label>
+        <select asp-for="ParentId" asp-items="ViewBag.Parent" class="form-select"></select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+</form>
