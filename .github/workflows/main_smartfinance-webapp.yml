@@ -51,9 +51,22 @@ jobs:
       - name: Get OIDC Token for Azure
         id: get-oidc-token
         run: |
-          RESPONSE=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange")
-          TOKEN=$(echo $RESPONSE | jq -r '.value')
-          echo "token=$TOKEN" >> $GITHUB_OUTPUT
+          $response = curl -H "Authorization: bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange"
+          $token = $response | jq -r '.value'
+          echo "token=$token" >> $env:GITHUB_OUTPUT
+        shell: pwsh
+
+      - name: Debug Azure Login
+        run: |
+          echo "=== Testing Azure Login ==="
+          az login --service-principal `
+            -u "${{ secrets.AZURE_CLIENT_ID }}" `
+            -t "${{ secrets.AZURE_TENANT_ID }}" `
+            --federated-token "${{ steps.get-oidc-token.outputs.token }}"
+          
+          echo "=== Subscription List ==="
+          az account list --output table
+        shell: pwsh
 
       - name: Debug Azure Login
         run: |
@@ -82,5 +95,6 @@ jobs:
           package: .
 
           
+
 
 
