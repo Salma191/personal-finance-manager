@@ -48,6 +48,22 @@ jobs:
         with:
           name: .net-app
       
+      - name: Debug OIDC Token
+        run: |
+          echo "=== Debug OIDC Token ==="
+          echo "CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}"
+          echo "TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}"
+          echo "SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+          
+          # Tester la connexion Azure
+          az login --service-principal \
+            -u ${{ secrets.AZURE_CLIENT_ID }} \
+            -t ${{ secrets.AZURE_TENANT_ID }} \
+            --federated-token "$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
+          
+          # Afficher les abonnements
+          az account list --output table
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -64,3 +80,4 @@ jobs:
           package: .
 
           
+
