@@ -51,33 +51,18 @@ jobs:
       - name: Get OIDC Token for Azure
         id: get-oidc-token
         run: |
-          $response = curl -H "Authorization: bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange"
-          $token = $response | jq -r '.value'
-          echo "token=$token" >> $env:GITHUB_OUTPUT
+          $response = Invoke-RestMethod -Uri "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" -Headers @{Authorization = "bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN"}
+          echo "token=$($response.value)" >> $env:GITHUB_OUTPUT
         shell: pwsh
 
       - name: Debug Azure Login
         run: |
           echo "=== Testing Azure Login ==="
-          az login --service-principal `
-            -u "${{ secrets.AZURE_CLIENT_ID }}" `
-            -t "${{ secrets.AZURE_TENANT_ID }}" `
-            --federated-token "${{ steps.get-oidc-token.outputs.token }}"
+          az login --service-principal --username "${{ secrets.AZURE_CLIENT_ID }}" --tenant "${{ secrets.AZURE_TENANT_ID }}" --federated-token "${{ steps.get-oidc-token.outputs.token }}"
           
           echo "=== Subscription List ==="
           az account list --output table
         shell: pwsh
-
-      - name: Debug Azure Login
-        run: |
-          echo "=== Testing Azure Login ==="
-          az login --service-principal \
-            -u ${{ secrets.AZURE_CLIENT_ID }} \
-            -t ${{ secrets.AZURE_TENANT_ID }} \
-            --federated-token "${{ steps.get-oidc-token.outputs.token }}"
-          
-          echo "=== Subscription List ==="
-          az account list --output table
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -95,6 +80,7 @@ jobs:
           package: .
 
           
+
 
 
 
