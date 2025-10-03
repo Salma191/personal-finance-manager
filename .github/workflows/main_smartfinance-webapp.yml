@@ -47,23 +47,25 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
-      - name: Debug OIDC Token
+
+      - name: Get OIDC Token for Azure
+        id: get-oidc-token
         run: |
-          echo "=== Debug OIDC Token ==="
-          echo "CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}"
-          echo "TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}"
-          echo "SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-          
-          # Tester la connexion Azure
+          RESPONSE=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange")
+          TOKEN=$(echo $RESPONSE | jq -r '.value')
+          echo "token=$TOKEN" >> $GITHUB_OUTPUT
+
+      - name: Debug Azure Login
+        run: |
+          echo "=== Testing Azure Login ==="
           az login --service-principal \
             -u ${{ secrets.AZURE_CLIENT_ID }} \
             -t ${{ secrets.AZURE_TENANT_ID }} \
-            --federated-token "$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
+            --federated-token "${{ steps.get-oidc-token.outputs.token }}"
           
-          # Afficher les abonnements
+          echo "=== Subscription List ==="
           az account list --output table
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -80,4 +82,5 @@ jobs:
           package: .
 
           
+
 
